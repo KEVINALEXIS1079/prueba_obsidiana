@@ -1,0 +1,5 @@
+# Obsidian configuration (contains local tokens and cache)
+Obsidian/.obsidian/
+
+# Node modules
+node_modules/
