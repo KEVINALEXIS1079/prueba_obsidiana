@@ -5,17 +5,21 @@ const { execSync } = require('child_process');
 // 1. Validar argumentos de entrada
 const docFileName = process.argv[2];
 const prTitle = process.argv[3];
+const boardName = process.argv[4] || 'Tablero'; // Por defecto usa Tablero.md
 
 if (!docFileName || !prTitle) {
   console.error('Error: Faltan argumentos.');
-  console.error('Uso: node sync-pr.js "<nombre-del-archivo.md>" "<Título del PR>"');
+  console.error('Uso: node sync-pr.js "<nombre-del-archivo.md>" "<Título del PR>" [NombreDelTablero]');
+  console.error('Ejemplo: node sync-pr.js "feature-login.md" "Feat: Login" "Tablero-Features"');
   process.exit(1);
 }
 
 // Asegurar que el nombre tenga la extensión .md
 const normalizedDocName = docFileName.endsWith('.md') ? docFileName : `${docFileName}.md`;
 const docPath = path.join(__dirname, 'Obsidian', '2-Docs-PullRequests', normalizedDocName);
-const kanbanPath = path.join(__dirname, 'Obsidian', '1-Tickets-y-Kanban', 'Tablero.md');
+
+const normalizedBoardName = boardName.endsWith('.md') ? boardName : `${boardName}.md`;
+const kanbanPath = path.join(__dirname, 'Obsidian', '1-Tickets-y-Kanban', normalizedBoardName);
 
 // 2. Lectura de Documentación usando el módulo fs
 if (!fs.existsSync(docPath)) {
@@ -45,13 +49,12 @@ console.log(`Creando Pull Request: "${prTitle}"...`);
 let prUrl;
 try {
   // Ejecutamos gh pr create pasando el contenido del archivo .md como body vía stdin
-  // El flag --body-file - le indica a gh que lea el cuerpo desde la entrada estándar (stdin)
   const command = `gh pr create --title "${prTitle.replace(/"/g, '\\"')}" --body-file -`;
   
   const stdout = execSync(command, {
     input: docContent,
     encoding: 'utf8',
-    stdio: ['pipe', 'pipe', 'inherit'] // pipe stdin para el input, pipe stdout para capturar la URL, heredamos stderr
+    stdio: ['pipe', 'pipe', 'inherit']
   });
   
   prUrl = stdout.trim();
@@ -79,7 +82,7 @@ try {
   const headerIndex = lines.findIndex(line => line.trim() === targetHeader);
   
   if (headerIndex === -1) {
-    console.error(`Error: No se encontró la sección "${targetHeader}" en el tablero Kanban.`);
+    console.error(`Error: No se encontró la sección "${targetHeader}" en el tablero Kanban: ${normalizedBoardName}`);
     process.exit(1);
   }
   
@@ -88,7 +91,7 @@ try {
   lines.splice(headerIndex + 1, 0, newTaskLine);
   
   fs.writeFileSync(kanbanPath, lines.join('\n'), 'utf8');
-  console.log(`Tablero Kanban actualizado con éxito. Se agregó la tarea: ${newTaskLine}`);
+  console.log(`Tablero Kanban (${normalizedBoardName}) actualizado con éxito. Se agregó la tarea: ${newTaskLine}`);
 } catch (error) {
   console.error(`Error al actualizar el tablero Kanban: ${error.message}`);
   process.exit(1);
