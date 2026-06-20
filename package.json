@@ -1,0 +1,12 @@
+{
+  "name": "prueba_obsidiana",
+  "version": "1.0.0",
+  "description": "Repositorio de prueba para automatizaciones con Obsidian",
+  "main": "sync-pr.js",
+  "scripts": {
+    "sync-pr": "node sync-pr.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
