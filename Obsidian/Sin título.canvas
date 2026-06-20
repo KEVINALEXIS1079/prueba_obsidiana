@@ -1,0 +1,111 @@
+{
+  "nodes": [
+    {
+      "id": "1",
+      "type": "text",
+      "text": "# Flujo de Trabajo Automatizado\nEste lienzo describe el flujo de desarrollo, documentación y sincronización del repositorio.",
+      "x": 0,
+      "y": 150,
+      "width": 320,
+      "height": 180
+    },
+    {
+      "id": "2",
+      "type": "text",
+      "text": "### 1. Crear Rama de Feature\nCrea una nueva rama de Git para trabajar en tu feature:\n\n`git checkout -b feature/mi-cambio`",
+      "x": 400,
+      "y": 0,
+      "width": 300,
+      "height": 140
+    },
+    {
+      "id": "3",
+      "type": "text",
+      "text": "### 2. Desarrollo en NestJS\nRealiza tus cambios de código en la carpeta:\n\n`backend/` (Proyecto NestJS)",
+      "x": 400,
+      "y": 180,
+      "width": 300,
+      "height": 140
+    },
+    {
+      "id": "4",
+      "type": "text",
+      "text": "### 3. Documentar en Obsidian\nCrea o actualiza un archivo `.md` en:\n\n`Obsidian/2-Docs-PullRequests/`",
+      "x": 400,
+      "y": 360,
+      "width": 300,
+      "height": 140
+    },
+    {
+      "id": "5",
+      "type": "text",
+      "text": "### 4. Confirmar y Subir Rama\nSube los cambios a GitHub:\n\n`git add .`  \n`git commit -m \"feat: mensaje\"`  \n`git push -u origin feature/...`",
+      "x": 800,
+      "y": 180,
+      "width": 300,
+      "height": 160
+    },
+    {
+      "id": "6",
+      "type": "text",
+      "text": "### 5. Ejecutar Sincronización\nEjecuta el orquestador en la raíz:\n\n`npm run sync-pr -- \"archivo.md\" \"Título del PR\"`",
+      "x": 1200,
+      "y": 180,
+      "width": 320,
+      "height": 160
+    },
+    {
+      "id": "7",
+      "type": "file",
+      "file": "1-Tickets-y-Kanban/Tablero.md",
+      "x": 1600,
+      "y": 60,
+      "width": 400,
+      "height": 400
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "fromNode": "2",
+      "fromSide": "bottom",
+      "toNode": "3",
+      "toSide": "top"
+    },
+    {
+      "id": "e2",
+      "fromNode": "3",
+      "fromSide": "bottom",
+      "toNode": "4",
+      "toSide": "top"
+    },
+    {
+      "id": "e3",
+      "fromNode": "4",
+      "fromSide": "right",
+      "toNode": "5",
+      "toSide": "bottom"
+    },
+    {
+      "id": "e4",
+      "fromNode": "2",
+      "fromSide": "right",
+      "toNode": "5",
+      "toSide": "top"
+    },
+    {
+      "id": "e5",
+      "fromNode": "5",
+      "fromSide": "right",
+      "toNode": "6",
+      "toSide": "left"
+    },
+    {
+      "id": "e6",
+      "fromNode": "6",
+      "fromSide": "right",
+      "toNode": "7",
+      "toSide": "left"
+    }
+  ]
+}
