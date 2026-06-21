@@ -11,6 +11,8 @@ kanban-plugin: basic
 - [ ] Tarea de ejemplo 2
 
 ## In review
+- [ ] [PR: Feature: NestJS Backend Initial Setup](https://github.com/KEVINALEXIS1079/prueba_obsidiana/pull/5)
+- [ ] [PR: Mi tercer PR automatizado](https://github.com/KEVINALEXIS1079/prueba_obsidiana/pull/4)
 - [ ] [PR: Mi segundo PR automatizado](https://github.com/KEVINALEXIS1079/prueba_obsidiana/pull/3)
 - [ ] [PR: Mi primer PR automatizado](https://github.com/KEVINALEXIS1079/prueba_obsidiana/pull/2)
 

@@ -1,0 +1,16 @@
+{
+	"nodes":[
+		{"id":"1","type":"text","text":"# ✨ Arquitectura de Feature: CRUD de Usuarios\nMapa visual de los componentes generados en NestJS para la gestión de usuarios.","x":-100,"y":-200,"width":600,"height":120},
+		{"id":"2","type":"text","text":"### 1. Entidad (Entity)\n`backend/src/users/entities/user.entity.ts`\nDefine la estructura del dato (Ej. Id, Nombre, Email).","x":-100,"y":0,"width":300,"height":140},
+		{"id":"3","type":"text","text":"### 2. DTOs\n`backend/src/users/dto/`\nReglas de validación de los datos entrantes (`CreateUserDto`, `UpdateUserDto`).","x":300,"y":0,"width":300,"height":140},
+		{"id":"4","type":"text","text":"### 3. Servicio (Service)\n`backend/src/users/users.service.ts`\nContiene la lógica de negocio y las llamadas a base de datos.","x":100,"y":200,"width":300,"height":140},
+		{"id":"5","type":"text","text":"### 4. Controlador (Controller)\n`backend/src/users/users.controller.ts`\nExpone las rutas RESTful (`@Get()`, `@Post()`, etc.) hacia el exterior.","x":100,"y":400,"width":300,"height":140},
+		{"id":"6","type":"file","file":"2-Docs-PullRequests/feature-users-crud.md","x":500,"y":200,"width":400,"height":340}
+	],
+	"edges":[
+		{"id":"e1","fromNode":"2","fromSide":"bottom","toNode":"4","toSide":"top"},
+		{"id":"e2","fromNode":"3","fromSide":"bottom","toNode":"4","toSide":"top"},
+		{"id":"e3","fromNode":"4","fromSide":"bottom","toNode":"5","toSide":"top"},
+		{"id":"e4","fromNode":"5","fromSide":"right","toNode":"6","toSide":"bottom"}
+	]
+}

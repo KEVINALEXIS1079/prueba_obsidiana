@@ -4,7 +4,9 @@
   "description": "Repositorio de prueba para automatizaciones con Obsidian",
   "main": "sync-pr.js",
   "scripts": {
-    "sync-pr": "node sync-pr.js"
+    "sync-pr": "node sync-pr.js",
+    "sync-pr:feature": "node sync-pr.js \"$1\" \"$2\" \"Tablero-Features\"",
+    "sync-pr:bug": "node sync-pr.js \"$1\" \"$2\" \"Tablero-Bugs\""
   },
   "keywords": [],
   "author": "",
